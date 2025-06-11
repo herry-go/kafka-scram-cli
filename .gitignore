@@ -1,0 +1,6 @@
+# jetbrains 系列编辑器配置
+.idea/
+.vscode/
+data/
+vendor/
+
