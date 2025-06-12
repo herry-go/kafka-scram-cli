@@ -14,6 +14,22 @@
 - [sarama](https://github.com/IBM/sarama)
 - [cobra](https://github.com/spf13/cobra)
 
+## 安装步骤
+
+### 方法一：使用 `go install` 安装（推荐）
+```bash
+go install github.com/herry-go/kafka-scram-cli/ksc@latest
+```
+
+### 方法二：下载 Release 包并手动安装
+1. 下载对应平台的发布包（如 `ksc-linux-amd64-v1.0.0.tar.gz`）
+2. 解压后运行安装脚本：
+```bash
+tar -xf ksc-linux-amd64-v1.0.0.tar.gz 
+cd ksc-linux-amd64/ 
+./install.sh
+```
+
 ## 本地编译
 
 ```bash
@@ -30,31 +46,31 @@ go build -o ksc main.go
 ### 1. 生产消息
 
 ```bash
-./ksc produce -b 127.0.0.1:19093 -u kafkaclient -p password -t test -m "你好，Kafka！"
+ksc produce -b 127.0.0.1:19094 -u kafkaclient -p password -t test -m "你好，Kafka！"
 ```
 
 ### 2. 消费消息
 
 ```bash
-./ksc consume -b 127.0.0.1:19093 -u kafkaclient -p password -t test
+ksc consume -b 127.0.0.1:19094 -u kafkaclient -p password -t test
 ```
 
 ### 3. 列出所有主题
 
 ```bash
-./ksc list -b 127.0.0.1:19093 -u kafkaclient -p password
+ksc list -b 127.0.0.1:19094 -u kafkaclient -p password
 ```
 
 ### 4. 创建主题
 
 ```bash
-./ksc create -b 127.0.0.1:19093 -u kafkaclient -p password -t test
+ksc create -b 127.0.0.1:19094 -u kafkaclient -p password -t test
 ```
 
 ### 5. 删除主题
 
 ```bash
-./ksc delete -b 127.0.0.1:19093 -u kafkaclient -p password -t test
+ksc delete -b 127.0.0.1:19094 -u kafkaclient -p password -t test
 ```
 
 ### 连接多个 broker
@@ -62,7 +78,7 @@ go build -o ksc main.go
 用逗号分隔多个 broker 地址：
 
 ```bash
-./ksc list -b 127.0.0.1:19093,127.0.0.1:29093 -u kafkaclient -p password
+ksc list -b 127.0.0.1:19094,127.0.0.1:29094 -u kafkaclient -p password
 ```
 
 ## 参数说明

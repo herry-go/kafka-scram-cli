@@ -4,5 +4,5 @@
 data/
 vendor/
 dist/*.tar.gz
-dist/*64
+dist/ksc-*
 
