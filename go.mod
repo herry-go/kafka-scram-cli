@@ -1,4 +1,4 @@
-module github.com/herry-go/ksl
+module github.com/herry-go/kafka-scram-cli
 
 go 1.23.0
 

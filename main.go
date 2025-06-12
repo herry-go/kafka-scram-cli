@@ -3,14 +3,16 @@ package main
 import (
 	"crypto/tls"
 	"fmt"
+	"github.com/herry-go/kafka-scram-cli/scram"
 	"log"
 	"os"
-	"github.com/herry-go/ksl/scram"
 	"time"
 
 	"github.com/IBM/sarama"
 	"github.com/spf13/cobra"
 )
+
+var version = "v1.0.0"
 
 var (
 	brokers     []string
@@ -177,7 +179,8 @@ func deleteTopic(cmd *cobra.Command, args []string) error {
 
 func main() {
 	var rootCmd = &cobra.Command{
-		Use:   "kcl",
+		Version: version,
+		Use:   "ksl",
 		Short: "Kafka 命令行测试工具",
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			if len(brokers) == 0 {
@@ -197,7 +200,7 @@ func main() {
 	rootCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "SCRAM 认证密码")
 	rootCmd.PersistentFlags().StringVarP(&topic, "topic", "t", "", "主题名称")
 	rootCmd.PersistentFlags().StringVarP(&scramType, "scram", "s", "SHA512", "SCRAM 认证类型 (SHA256 或 SHA512)")
-	rootCmd.PersistentFlags().BoolVarP(&enableTLS, "tls", "", true, "是否启用 TLS")
+	rootCmd.PersistentFlags().BoolVarP(&enableTLS, "tls", "", false, "是否启用 TLS")
 
 	// 生产消息命令
 	produceCmd := &cobra.Command{
